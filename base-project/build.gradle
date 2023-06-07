@@ -14,6 +14,11 @@ android {
         targetSdk 33
         versionCode 1
         multiDexEnabled true
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
         project.ext.set("defaultBuildVariant", "appTest")
