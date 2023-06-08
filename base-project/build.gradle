@@ -5,7 +5,7 @@ plugins {
 }
 apply plugin: 'kotlin-kapt'
 android {
-    namespace 'com.mobiai.base23code'
+    namespace 'com.mobiai'
     compileSdk 33
 
     defaultConfig {
