@@ -4,7 +4,6 @@ plugins {
     id("maven-publish")
 }
 apply plugin: 'kotlin-kapt'
-
 android {
     namespace 'com.mobiai'
     compileSdk 33
@@ -19,12 +18,11 @@ android {
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        project.ext.set("defaultBuildVariant", "appTest")
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -33,19 +31,45 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    flavorDimensions "default"
+    buildFeatures {
+        viewBinding true
+    }
+    viewBinding {
+        enabled true
+    }
+    dataBinding {
+        enabled true
+    }
     kotlinOptions {
         jvmTarget = '17'
     }
+    flavorDimensions "default"
     publishing {
         singleVariant("release") {
             withSourcesJar()
             withJavadocJar()
         }
     }
+
 }
 
 dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.databinding:viewbinding:8.0.2'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    def room_version = "2.5.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+
     implementation platform('com.google.firebase:firebase-bom:31.2.2')
 
     // Add the dependencies for the Crashlytics and Analytics libraries
@@ -53,18 +77,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation 'androidx.core:core-ktx:1.10.1'
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
-    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
-
-    /* //Apero lib
-     implementation 'apero-inhouse:apero-ads:1.0.6-alpha05'
- */
-    //firebase
+//firebase
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-core'
@@ -74,33 +88,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf-ktx'
     implementation 'com.google.firebase:firebase-core:21.1.1'
 
-    //sdp. ssp
-    implementation 'com.intuit.sdp:sdp-android:1.1.0'
-    implementation 'com.intuit.ssp:ssp-android:1.1.0'
-
-    //apero update inapp
-    implementation 'apero:in.app.update:1.0.8@aar'
-    implementation 'com.google.android.play:app-update:2.0.1'
-    implementation 'com.google.android.play:app-update-ktx:2.0.1'
-    implementation project(path: ':base-project')
-    implementation 'androidx.databinding:viewbinding:8.0.2'
-
-    def room_version = "2.5.1"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 afterEvaluate{
     publishing {
         publications {
-            release(MavenPublication)  {
-                groupId = "com.github.iappa01"
+            release(MavenPublication) {
+                groupId = "com.github.LeTuanVu-Dev"
                 artifactId = "iappa-project-base"
-                version = "0.0.0"
+                version = "0.0.3"
 
                 afterEvaluate {
                     from(components["release"])
@@ -108,4 +103,5 @@ afterEvaluate{
             }
         }
     }
+
 }
