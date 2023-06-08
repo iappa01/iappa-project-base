@@ -40,7 +40,7 @@ abstract class BaseActivity<V:ViewBinding> : AppCompatActivity(){
         decorView = window.decorView
         setFullscreen()
         createView()
-        LanguageUtil.setupLanguage(this)
+       // LanguageUtil.setupLanguage(this)
     }
 
     protected abstract fun getLayoutResourceId(): Int
@@ -105,12 +105,12 @@ abstract class BaseActivity<V:ViewBinding> : AppCompatActivity(){
 
     open fun addFragment(fragment: Fragment, viewId: Int = android.R.id.content, addToBackStack: Boolean = true) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
+       /* transaction.setCustomAnimations(
             R.anim.slide_in,
             R.anim.fade_out,
             R.anim.fade_in,
             R.anim.slide_out
-        )
+        )*/
         transaction.add(viewId, fragment)
         if (addToBackStack) {
             transaction.addToBackStack(null)
@@ -122,12 +122,12 @@ abstract class BaseActivity<V:ViewBinding> : AppCompatActivity(){
     open fun replaceFragment(fragment: Fragment, viewId: Int = android.R.id.content, addToBackStack: Boolean = true) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(viewId, fragment)
-        transaction.setCustomAnimations(
+       /* transaction.setCustomAnimations(
             R.anim.slide_in,
             R.anim.fade_out,
             R.anim.fade_in,
             R.anim.slide_out
-        )
+        )*/
         if (addToBackStack) {
             transaction.addToBackStack(fragment.javaClass.simpleName)
         }
@@ -156,12 +156,12 @@ abstract class BaseActivity<V:ViewBinding> : AppCompatActivity(){
         super.onResume()
         val connectivityManager =
             getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             connectivityManager.registerDefaultNetworkCallback(networkCallback)
         } else {
             val request = NetworkRequest.Builder().addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build()
             connectivityManager.registerNetworkCallback(request, networkCallback)
-        }
+        }*/
     }
 
     override fun onPause() {

@@ -32,9 +32,9 @@ import com.mobiai.base.language.LanguageUtil
 //    protected abstract fun setup()
 //}
 
-open class BaseDialog(context: Context) : Dialog(context, R.style.Theme_Dialog) {
+open class BaseDialog(context: Context) : Dialog(context, androidx.appcompat.R.style.Theme_AppCompat_Dialog) {
     init {
-        LanguageUtil.setupLanguage(context)
+       // LanguageUtil.setupLanguage(context)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)

@@ -5,12 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
-import android.util.Log
 import androidx.viewbinding.ViewBinding
-import com.ads.control.ads.AperoAd
-import com.ads.control.ads.AperoAdCallback
-import com.ads.control.ads.wrapper.ApAdError
-import com.ads.control.billing.AppPurchase
 
 abstract class BaseSplashActivity<V : ViewBinding> : BaseActivity<V>(){
     var isOnStop = false
@@ -84,7 +79,7 @@ abstract class BaseSplashActivity<V : ViewBinding> : BaseActivity<V>(){
     }
 
     private fun setUpPurchase(){
-        if (AppPurchase.getInstance().initBillingFinish) {
+       /* if (AppPurchase.getInstance().initBillingFinish) {
             showNextScreen()
         } else {
             AppPurchase.getInstance().setBillingListener({ i: Int ->
@@ -92,17 +87,17 @@ abstract class BaseSplashActivity<V : ViewBinding> : BaseActivity<V>(){
                     showNextScreen()
                 }
             }, 2000)
-        }
+        }*/
     }
 
      private fun showNextScreen() {
-        if (AppPurchase.getInstance().isPurchased(this)) {
+       /* if (AppPurchase.getInstance().isPurchased(this)) {
             showNextScreenHandler.postDelayed({
                 openNextScreen()
             }, 2000)
         } else {
             startNotPurchase()
-        }
+        }*/
     }
 
     private fun startNotPurchase(){
@@ -123,7 +118,7 @@ abstract class BaseSplashActivity<V : ViewBinding> : BaseActivity<V>(){
         }*/
         openNextScreen()
     }
-    private var adAperoCallBack = object : AperoAdCallback() {
+   /* private var adAperoCallBack = object : AperoAdCallback() {
         override fun onAdLoaded() {
             super.onAdLoaded()
         }
@@ -159,5 +154,5 @@ abstract class BaseSplashActivity<V : ViewBinding> : BaseActivity<V>(){
 
         }
     }
-
+*/
 }
