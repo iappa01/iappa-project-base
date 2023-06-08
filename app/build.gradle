@@ -38,11 +38,7 @@ android {
     dataBinding {
         enabled true
     }
-    bundle {
-        language {
-            enableSplit = false
-        }
-    }
+
     flavorDimensions "default"
     kotlinOptions {
         jvmTarget = '17'
