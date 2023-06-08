@@ -4,7 +4,7 @@
 
     <style name="style_description">
         <item name="textAllCaps">false</item>
-        <item name="android:textColor">@color/color_description_text</item>
+        <item name="android:textColor">@color/design_default_color_secondary</item>
         <item name="android:textSize">16sp</item>
     </style>
 
