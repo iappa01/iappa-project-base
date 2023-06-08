@@ -5,31 +5,29 @@ plugins {
 }
 
 android {
-    namespace 'com.mobiai'
+    namespace 'com.mobiai.base23code'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mobiai"
-        minSdk 23
+        applicationId "com.mobiai.base23code"
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-
-    flavorDimensions "default"
     kotlinOptions {
         jvmTarget = '17'
     }
@@ -39,9 +37,7 @@ android {
             withJavadocJar()
         }
     }
-
 }
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
