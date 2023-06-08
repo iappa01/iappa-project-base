@@ -1,9 +1,7 @@
 package com.mobiai.base.storage
 
-import androidx.lifecycle.MutableLiveData
-import com.ads.control.ads.wrapper.ApNativeAd
 
 class StorageCommon {
-    var nativeAdLanguage = MutableLiveData<ApNativeAd>()
+    //var nativeAdLanguage = MutableLiveData<ApNativeAd>()
 
 }
